@@ -1,6 +1,7 @@
 package random_generator;
 
 import java.util.Random;
+import java.util.Scanner;
 /*
 Создайте серверное приложение «Генератор цитат» и клиента для получения данных.
  При запросе (любом или стандартизованном) клиента серверное приложение должно вернуть случайную цитату.
@@ -37,5 +38,26 @@ public final class Generator {
 
 
             return builder.toString();
+    }
+
+    public static void setPassword(){
+        Scanner scanner = new Scanner(System.in);
+        String password = "qwerty";
+        System.out.println("Введите пароль :");
+
+        boolean isAccept = false;
+        while (!isAccept) {
+            String userInput = scanner.nextLine();
+            if (userInput.equals(password)) {
+                System.out.println("Доступ разрешен!");
+                isAccept = true;
+            }
+            else if (userInput.isEmpty()) {
+                System.out.println("Вы ничего не ввели, введите пароль!");
+            }
+            else {
+                System.out.println("Вы ввели некорректный пароль, попробуйте еще раз!");
+            }
+        }
     }
 }
