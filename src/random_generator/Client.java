@@ -2,8 +2,6 @@ package random_generator;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Scanner;
 
 public class Client {
     final static String IP = "localhost";

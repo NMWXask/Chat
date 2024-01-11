@@ -1,10 +1,7 @@
 package random_generator;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.*;
 import java.net.ServerSocket;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Server {
@@ -32,7 +29,7 @@ public class Server {
                 while (true) {
                     String name = reader.readLine();
                     String password = reader.readLine();
-                    if (Generator.setPassword(name, password)) {
+                    if (Utils.setPassword(name, password)) {
                         out.println("ok");
                         break;
                     } else {
@@ -46,7 +43,7 @@ public class Server {
                 String randomPhrase = null;//фраза, которую генерирует метод.
 
                 while (true) {
-                    randomPhrase = Generator.getRandomPhrase();//присваиваем фразу
+                    randomPhrase = Utils.getRandomPhrase();//присваиваем фразу
                     out.println(randomPhrase);//отправляем сообщением данную фразу
                     countQuote++;
                     request = reader.readLine();

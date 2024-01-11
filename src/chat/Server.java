@@ -1,5 +1,9 @@
+package chat;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.time.LocalTime;
 import java.util.Scanner;

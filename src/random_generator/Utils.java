@@ -1,7 +1,7 @@
 package random_generator;
 
 import java.util.Random;
-import java.util.Scanner;
+
 /*
 Создайте серверное приложение «Генератор цитат» и клиента для получения данных.
  При запросе (любом или стандартизованном) клиента серверное приложение должно вернуть случайную цитату.
@@ -22,7 +22,7 @@ import java.util.Scanner;
 
  */
 
-public final class Generator {
+public final class Utils {
     public static String getRandomPhrase() {
         Random random = new Random();
 
