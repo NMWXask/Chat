@@ -33,31 +33,18 @@ public final class Generator {
                     "свитшот","зачем","джексон","деловой","вагон","кровать","смартфон","дятел"};
 
             for (int i = 0; i < (words.length); i++) {
-                builder.append(words[random.nextInt(0, words.length-1)]).append(", ");
+                builder.append(words[random.nextInt(0, words.length-1)]).append(" ");
             }
 
 
             return builder.toString();
     }
 
-    public static void setPassword(){
-        Scanner scanner = new Scanner(System.in);
-        String password = "qwerty";
-        System.out.println("Введите пароль :");
+    public static boolean setPassword(String name,String password){
 
-        boolean isAccept = false;
-        while (!isAccept) {
-            String userInput = scanner.nextLine();
-            if (userInput.equals(password)) {
-                System.out.println("Доступ разрешен!");
-                isAccept = true;
-            }
-            else if (userInput.isEmpty()) {
-                System.out.println("Вы ничего не ввели, введите пароль!");
-            }
-            else {
-                System.out.println("Вы ввели некорректный пароль, попробуйте еще раз!");
-            }
-        }
+       if(name.equals("admin")&&password.equals("qwerty")) {
+           return true;
+       } else
+           return false;
     }
 }

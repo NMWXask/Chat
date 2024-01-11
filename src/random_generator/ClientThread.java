@@ -2,15 +2,16 @@ package random_generator;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Scanner;
 
-public class Client {
-    final static String IP = "localhost";
-    final static int PORT = 8080;
+public class ClientThread extends Thread{
 
-    public static void main(String[] args) {
-        try (var socket = new Socket(IP, PORT);
+    private static Socket socket;
+    public ClientThread(Socket socket) {
+        ClientThread.socket = socket;
+    }
+    public void run(){
+
+        try (
              var reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              var writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
              PrintWriter out = new PrintWriter(writer, true);
@@ -30,6 +31,7 @@ public class Client {
                 }
             }
 
+
             while (true) {
                 String message = reader.readLine();//принимаем сообщение от сервера
                 System.out.println(message);//выводим себе на экран сообщение
@@ -42,6 +44,13 @@ public class Client {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        finally {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

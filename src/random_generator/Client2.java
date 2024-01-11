@@ -2,10 +2,9 @@ package random_generator;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Scanner;
 
-public class Client {
+public class Client2 {
+
     final static String IP = "localhost";
     final static int PORT = 8080;
 
@@ -29,6 +28,7 @@ public class Client {
                     System.out.println("Не правильно введены логин или пароль.");
                 }
             }
+
 
             while (true) {
                 String message = reader.readLine();//принимаем сообщение от сервера
