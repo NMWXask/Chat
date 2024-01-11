@@ -4,11 +4,21 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.io.*;
 import java.net.ServerSocket;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Server {
     public static void main(String[] args) {
 
-        while (true) {
+        String nameClient = null;
+
+        Date timeConnection = null;
+
+        int countQuote = 0;
+
+        Date timeDisconnection = null;
+
+
 
             try (var serverSocket = new ServerSocket(8080);
                  var socket = serverSocket.accept();
@@ -16,6 +26,8 @@ public class Server {
                  var writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                  PrintWriter out = new PrintWriter(writer, true)
             ) {
+                timeConnection = new Date();
+                nameClient = socket.toString();
                 System.out.println("Соединение установлено." + socket.getLocalSocketAddress());
                 while (true) {
                     String name = reader.readLine();
@@ -36,8 +48,10 @@ public class Server {
                 while (true) {
                     randomPhrase = Generator.getRandomPhrase();//присваиваем фразу
                     out.println(randomPhrase);//отправляем сообщением данную фразу
+                    countQuote++;
                     request = reader.readLine();
                     if (request.equalsIgnoreCase("stop")) {
+
                         break;
                     }
                     System.out.println(request);
@@ -46,7 +60,12 @@ public class Server {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+        timeDisconnection = new Date();
+        System.out.println("Client name :"+nameClient);
+        System.out.println("Time connection :"+timeConnection);
+        System.out.println("Count quotes :"+countQuote);
+        System.out.println("Time disconnection :"+timeDisconnection);
+
     }
 
 }

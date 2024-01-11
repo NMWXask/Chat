@@ -10,6 +10,7 @@ public class Client {
     final static int PORT = 8080;
 
     public static void main(String[] args) {
+
         try (var socket = new Socket(IP, PORT);
              var reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              var writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
