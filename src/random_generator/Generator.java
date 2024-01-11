@@ -23,28 +23,32 @@ import java.util.Scanner;
  */
 
 public final class Generator {
-    public static String getRandomPhrase(){
+    public static String getRandomPhrase() {
         Random random = new Random();
 
-        StringBuilder builder = new StringBuilder();
+        String[] words = {"Сегодня люди стали гораздо дешевле, чем то, что на них надето.",
+                "Будь самим собой, имей свою точку зрения, умей постоять за себя и за своих близких, " +
+                        "и тебя будут уважать.",
+                "Быть воином — самый эффективный способ жизни.", "В любом процессе важна не скорость, " +
+                "а удовольствие.",
+                "У каждого из нас есть достоинства, за которые стоит простить недостатки.",
+                "Никого сегодня не волнует твой внутренний мир. Людям важно, как ты одет и " +
+                        "громко ли смеёшься над их шутками.", "Возвращать стоит только тех людей, " +
+                "которые ушли по нашей вине.",
+                "Неважно, насколько красивы ваши слова, судить я буду по поступкам.",
+                "Умение слушать — большой плюс, а умение делать вид, что слушаешь," +
+                        " и в нужный момент вставлять слово — талант.", "Многие жалуются на свою внешность," +
+                " но на мозги не жалуется никто.",
+        };
 
-            String [] words = {"улица", "фонарь", "аптека", "шар", "огонь", "хромой","отвага",
-                    "слабоумие","котики","нарцисс","тридцать восемь","кирпич","деревянный","стекло",
-                    "свитшот","зачем","джексон","деловой","вагон","кровать","смартфон","дятел"};
-
-            for (int i = 0; i < (words.length); i++) {
-                builder.append(words[random.nextInt(0, words.length-1)]).append(" ");
-            }
-
-
-            return builder.toString();
+        return words[random.nextInt(0, words.length-1)];
     }
 
-    public static boolean setPassword(String name,String password){
+    public static boolean setPassword(String name, String password) {
 
-       if(name.equals("admin")&&password.equals("qwerty")) {
-           return true;
-       } else
-           return false;
+        if (name.equals("admin") && password.equals("qwerty")) {
+            return true;
+        } else
+            return false;
     }
 }
